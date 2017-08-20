@@ -42,7 +42,7 @@
 #
 #-------------------------------------------------------------------------
 import sys
-sys.path.append('Publicadores')
+sys.path.append('publicadores')
 from xiaomi_my_band import XiaomiMyBand
 
 
