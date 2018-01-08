@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #-------------------------------------------------------------------------
-# Archivo: jpy_to_usd.py
+# Archivo: eur_to_usd.py
 # Capitulo: 4 Patron Pipes and Filters
 # Autor(es): Perla Velasco & Yonathan Mtz.
 # Version: 1.0 Enero 2018
@@ -11,7 +11,7 @@
 #
 #   Las características de ésta clase son las siguientes:
 #
-#                                            jpy_to_usd.py
+#                                            eur_to_usd.py
 #           +-----------------------+-------------------------+------------------------+
 #           |  Nombre del elemento  |     Responsabilidad     |      Propiedades       |
 #           +-----------------------+-------------------------+------------------------+
@@ -44,27 +44,27 @@ import csv
 from extract_data import ExtractData
 
 
-class JPYToUSD(luigi.Task):
-    source = "../resources/jpy.csv" # entrada del Filter
-    divisa = 113.25 # valor de la moneda que será utilizado para convertir los dólares
+class EURToUSD(luigi.Task):
+    source = "eur.csv" # entrada del Filter
+    divisa = 0.83 # valor de la moneda que será utilizado para convertir los dólares
 
     def output(self):
-        return luigi.LocalTarget("../resources/jpy_to_usd.csv") # salida del Filter
+        return luigi.LocalTarget("eur_to_usd.csv") # salida del Filter
 
     def requires(self):
-        return ExtractData() # tarea(s) de las que depende el Filter
+        return ExtractData() # tarea(s) de la que depende éste Filter
 
     def run(self):
         with open(self.source) as csv_file:
             csv_reader = csv.DictReader(csv_file)
-            jpy_dataset = self.output()
-            with jpy_dataset.open('w') as jpy_opened:
+            eur_dataset = self.output()
+            with eur_dataset.open('w') as eur_opened:
                 headers = ['order_id', 'date', 'client_id', 'employee_id', 'store_id', 'money_code', 'item_id',
-                       'total']
-                jpy_writer = csv.DictWriter(jpy_opened, fieldnames=headers)
-                jpy_writer.writeheader()
+                           'total']
+                eur_writer = csv.DictWriter(eur_opened, fieldnames=headers)
+                eur_writer.writeheader()
                 for row in csv_reader:
-                    jpy_writer.writerow({
+                    eur_writer.writerow({
                         'order_id': row['order_id'],
                         'date': row['date'],
                         'client_id': row['client_id'],
@@ -72,7 +72,7 @@ class JPYToUSD(luigi.Task):
                         'store_id': row['store_id'],
                         'money_code': row['money_code'],
                         'item_id': row['item_id'],
-                        'total': float(row['total']) / self.divisa }) # conversión de yenes a dólares
+                        'total': float(row['total']) / self.divisa}) # conversión de euros a dólares
 
 
 if __name__ == '__main__':

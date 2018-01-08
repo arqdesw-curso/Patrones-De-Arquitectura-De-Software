@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #-------------------------------------------------------------------------
-# Archivo: mxn_to_usd.py
+# Archivo: load_data.py
 # Capitulo: 4 Patron Pipes and Filters
 # Autor(es): Perla Velasco & Yonathan Mtz.
 # Version: 1.0 Enero 2018
@@ -11,12 +11,12 @@
 #
 #   Las características de ésta clase son las siguientes:
 #
-#                                            mxn_to_usd.py
+#                                            load_data.py
 #           +-----------------------+-------------------------+------------------------+
 #           |  Nombre del elemento  |     Responsabilidad     |      Propiedades       |
 #           +-----------------------+-------------------------+------------------------+
 #           |        Filter         |  - Procesar los datos   |         source         |
-#           |                       |    de las ventas.       |         divisa         |
+#           |                       |    de las ventas.       |                        |
 #           +-----------------------+-------------------------+------------------------+
 #
 #   A continuación se describen los métodos que se implementaron en ésta clase:
@@ -41,38 +41,40 @@
 import luigi
 import csv
 
-from extract_data import ExtractData
+from jpy_to_usd import JPYToUSD
+from eur_to_usd import EURToUSD
+from mxn_to_usd import MXNToUSD
 
 
-class MXNToUSD(luigi.Task):
-    source = "../resources/mxn.csv" # entrada del Filter
-    divisa = 19.21 # valor de la moneda que será utilizado para convertir los dolares
+class LoadData(luigi.Task):
+    source = ("jpy_to_usd.csv", "eur_to_usd.csv", "mxn_to_usd.csv") # entrada(s) del Filter
 
     def output(self):
-        return luigi.LocalTarget("../resources/mxn_to_usd.csv") # salida del Filter
+        return luigi.LocalTarget("sales-2017-final.csv") # salida del Filter
 
     def requires(self):
-        return ExtractData() # tarea(s) de las que depende el Filter
+        return [JPYToUSD(), EURToUSD(), MXNToUSD()] # tarea(s) de las que depende el Filter
 
     def run(self):
-        with open(self.source) as csv_file:
-            mxn_dataset = self.output()
-            csv_reader = csv.DictReader(csv_file)
-            with mxn_dataset.open('w') as mxn_opened:
-                headers = ['order_id', 'date', 'client_id', 'employee_id', 'store_id', 'money_code', 'item_id',
-                           'total']
-                mxn_writer = csv.DictWriter(mxn_opened, fieldnames=headers)
-                mxn_writer.writeheader()
-                for row in csv_reader:
-                    mxn_writer.writerow({
-                        'order_id': row['order_id'],
-                        'date': row['date'],
-                        'client_id': row['client_id'],
-                        'employee_id': row['employee_id'],
-                        'store_id': row['store_id'],
-                        'money_code': row['money_code'],
-                        'item_id': row['item_id'],
-                        'total': float(row['total']) / self.divisa}) # conversión de pesos mexicanos a dólares
+        csv_dataset = self.output()
+        with csv_dataset.open('w') as csv_opened:
+            headers = ['order_id', 'date', 'client_id', 'employee_id', 'store_id', 'money_code', 'item_id',
+                       'total']
+            csv_writer = csv.DictWriter(csv_opened, fieldnames=headers)
+            csv_writer.writeheader()
+            for csv_source in self.source:
+                with open(csv_source) as csv_file:
+                    csv_reader = csv.DictReader(csv_file)
+                    for row in csv_reader:
+                        csv_writer.writerow({
+                            'order_id': row['order_id'],
+                            'date': row['date'],
+                            'client_id': row['client_id'],
+                            'employee_id': row['employee_id'],
+                            'store_id': row['store_id'],
+                            'money_code': row['money_code'],
+                            'item_id': row['item_id'],
+                            'total': row['total']})
 
 
 if __name__ == '__main__':

@@ -43,11 +43,11 @@ import csv
 
 
 class ExtractData(luigi.Task):
-    source = "../resources/sales-2017.csv" # entrada del Filter
+    source = "sales-2017.csv" # entrada del Filter
 
     def output(self):
-        return {'jpy': luigi.LocalTarget("../resources/jpy.csv"), 'eur': luigi.LocalTarget("../resources/eur.csv"),
-                'mxn': luigi.LocalTarget("../resources/mxn.csv")} # salida del Filter
+        return {'jpy': luigi.LocalTarget("jpy.csv"), 'eur': luigi.LocalTarget("eur.csv"),
+                'mxn': luigi.LocalTarget("mxn.csv")} # salida del Filter
 
     def requires(self):
         return [] # tarea(s) de las que depende el Filter
