@@ -6,6 +6,14 @@ Sistema de normalización de ventas. Repositorio del código fuente de los ejemp
 
 Para poder ejecutar el código fuente del SNV es necesario instalar el paquete de python `luigi`. Puedes instalar `luigi` ejecutando el siguiente comando `pip install luigi`. Se asume que previamente se ha instalado y configurado `pip`.
 
+## Ejecución
+
+Para ejecutar el SNV ejecuta el siguiente comando:
+
+```shell
+python load_data.py LoadData --local-scheduler
+```
+
 ## Versión
 
 1.0 - Enero 2018
