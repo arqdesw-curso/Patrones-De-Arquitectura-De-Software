@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 ## Ejecución
 
-Una vez instaladas las dependencias dle SNV, podrás ponerlo en marcha con el comando:
+Una vez instaladas las dependencias del SNV, podrás ponerlo en marcha con el comando:
 
 ```shell
 python load_data.py LoadData --local-scheduler
