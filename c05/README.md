@@ -31,6 +31,8 @@ python sv_text_analysis.py
 python sv_twitter.py
 ```
 
+Una vez puestos en marcha los microservicios y el `gui`, accede al sistema ingresando a la dirección local [http://localhost:8000/](http://localhost:8000/)
+
 ## Versión
 
 1.0 - Marzo 2017
