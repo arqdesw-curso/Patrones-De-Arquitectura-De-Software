@@ -40,16 +40,19 @@
 #-------------------------------------------------------------------------
 import luigi
 import csv
+import os
+import sys
 
 from extract_data import ExtractData
 
 
 class EURToUSD(luigi.Task):
-    source = "eur.csv" # entrada del Filter
+    sys.path.insert(0, os.path.abspath('..'))
+    source = "../resource/eur.csv" # entrada del Filter
     divisa = 0.83 # valor de la moneda que será utilizado para convertir los dólares
 
     def output(self):
-        return luigi.LocalTarget("eur_to_usd.csv") # salida del Filter
+        return luigi.LocalTarget("../resource/eur_to_usd.csv") # salida del Filter
 
     def requires(self):
         return ExtractData() # tarea(s) de la que depende éste Filter
