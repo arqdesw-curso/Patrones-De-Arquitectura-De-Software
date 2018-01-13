@@ -12,13 +12,13 @@ En la siguiente figura se muestra el diseño de la propuesta de solución del de
 
 ## Prerrequisitos
 
-Para poner en marcha el SPC se requiere instalar algunas dependencias. Podrás encontrar estas dependencias en el archivo requirements.txt. También puedes instalar éstas dependencias con el comando:
+Para poner en marcha el SPC se requiere instalar algunas dependencias. Podrás encontrar estas dependencias en el archivo `requirements.txt`. También puedes instalar éstas dependencias con el comando:
 
 ```shell
 pip install -r requirements.txt
 ```
 
-*Nota:* se asume que el gestor de dependencias `pip` se ha instalado previamente.
+**Nota:** se asume que el gestor de dependencias `pip` se ha instalado previamente.
 
 ## Ejecución
 
