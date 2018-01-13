@@ -6,7 +6,7 @@ Para el ejemplo práctico vamos a suponer que Apple, una empresa estadounidense 
 
 Dado lo anterior, el CEO de la empresa, Tim Cook, le ha pedido al departamento de ventas de la empresa que realicen el análisis de dichas ventas. Al tratar de analizar las ventas, el departamento encontró que los ingresos de cada venta se encontraba en términos monetarios del país en el que se ubica la sucursal, lo cual impidió que el departamento pudiese realizar el análisis. 
 
-Con el propósito de realizar esta tarea rápidamente, el departamento de ventas solicitó al departamento de desarrollo de software de Apple implementar el \textit{Sistema de Normalización de Ventas} (SNV), para que normalice dichas ventas antes de su análisis.
+Con el propósito de realizar esta tarea rápidamente, el departamento de ventas solicitó al departamento de desarrollo de software de Apple implementar el Sistema de Normalización de Ventas (SNV), para que normalice dichas ventas antes de su análisis.
 
 En la siguiente figura se muestra el diseño de la propuesta de solución del departamento de desarrollo para el SNV.
 
