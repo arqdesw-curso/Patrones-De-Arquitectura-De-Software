@@ -15,7 +15,8 @@ c05 | Contiene el código fuente del capítulo 5 del libro.
 Para poner en marcha alguno de los ejemplos es necesario instalar sus dependencias. Puedes instalar todas las dependencias necesarias para poner en marcha los tres ejemplos utilizando el archivo `requirements.txt` y ejecutando el siguiente comando:
 
 ```shell
-pip install -r requirements.txt```
+pip install -r requirements.txt
+```
 
 De igual manera cada ejemplo cuenta con un archivo `requirements.txt` propio que incluye las dependencias específicas para poner en marcha dicho ejemplo.
 
