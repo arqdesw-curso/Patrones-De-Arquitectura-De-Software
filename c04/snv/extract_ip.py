@@ -1,22 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #-------------------------------------------------------------------------
-# Archivo: eur_to_usd.py
+# Archivo: extract-ip.py
 # Capitulo: 4 Patron Pipes and Filters
 # Autor(es): Perla Velasco & Yonathan Mtz.
-# Version: 1.0 Enero 2018
+# Version: 2.0 Febrero 2018
 # Descripción:
 #
-#   Ésta clase define el rol de un Filter, es decir, procesa los datos de las ventas.
+#   Ésta clase define el rol de un Procesador de datos, es decir, procesa o transforma datos
 #
 #   Las características de ésta clase son las siguientes:
 #
-#                                            eur_to_usd.py
+#                                          extract_ip.py
 #           +-----------------------+-------------------------+------------------------+
 #           |  Nombre del elemento  |     Responsabilidad     |      Propiedades       |
 #           +-----------------------+-------------------------+------------------------+
-#           |        Filter         |  - Procesar los datos   |         source         |
-#           |                       |    de las ventas.       |         divisa         |
+#           |       Procesador      |  - Procesar o transfor- |           N/A          |
+#           |                       |    mar datos.           |                        |
 #           +-----------------------+-------------------------+------------------------+
 #
 #   A continuación se describen los métodos que se implementaron en ésta clase:
@@ -31,15 +31,14 @@
 #           +------------------------+--------------------------+-----------------------+
 #           |       requires()       |          - N/A           |  - Ejecuta las tareas |
 #           |                        |                          |    de las que depende |
-#           |                        |                          |    el Filter.         |
+#           |                        |                          |    el procesador.     |
 #           +------------------------+--------------------------+-----------------------+
-#           |         run()          |          - N/A           |  - Ejecuta el procesa-|
-#           |                        |                          |    miento del Filter. |
+#           |         run()          |          - N/A           |  - Procesa o transfor-|
+#           |                        |                          |    ma los datos.      |
 #           +------------------------+--------------------------+-----------------------+
 #
 #-------------------------------------------------------------------------
 import luigi
-import csv
 import os
 import sys
 
@@ -48,13 +47,12 @@ from access_log import AccessLog
 
 class ExtractIP(luigi.Task):
     sys.path.insert(0, os.path.abspath('..'))
-    source = "../resource/eur.csv" # entrada del Filter
 
     def output(self):
-        return luigi.LocalTarget("../resource/ip_access.log") # salida del Filter
+        return luigi.LocalTarget("../resource/ip_access.log")
 
     def requires(self):
-        return AccessLog() # tarea(s) de la que depende éste Filter
+        return AccessLog()
 
     def run(self):
         with self.input().open() as f:

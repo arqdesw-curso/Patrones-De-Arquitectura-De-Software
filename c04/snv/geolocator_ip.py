@@ -1,22 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #-------------------------------------------------------------------------
-# Archivo: eur_to_usd.py
+# Archivo: geolocator_ip.py
 # Capitulo: 4 Patron Pipes and Filters
 # Autor(es): Perla Velasco & Yonathan Mtz.
-# Version: 1.0 Enero 2018
+# Version: 2.0 Febrero 2018
 # Descripción:
 #
-#   Ésta clase define el rol de un Filter, es decir, procesa los datos de las ventas.
+#   Ésta clase define el rol de un Procesador, es decir, procesa o transforma datos
 #
 #   Las características de ésta clase son las siguientes:
 #
-#                                            eur_to_usd.py
+#                                         geolocator_ip.py
 #           +-----------------------+-------------------------+------------------------+
 #           |  Nombre del elemento  |     Responsabilidad     |      Propiedades       |
 #           +-----------------------+-------------------------+------------------------+
-#           |        Filter         |  - Procesar los datos   |         source         |
-#           |                       |    de las ventas.       |         divisa         |
+#           |       Procesador      |  - Procesar o transfor- |           N/A          |
+#           |                       |    mar datos.           |                        |
 #           +-----------------------+-------------------------+------------------------+
 #
 #   A continuación se describen los métodos que se implementaron en ésta clase:
@@ -33,8 +33,8 @@
 #           |                        |                          |    de las que depende |
 #           |                        |                          |    el Filter.         |
 #           +------------------------+--------------------------+-----------------------+
-#           |         run()          |          - N/A           |  - Ejecuta el procesa-|
-#           |                        |                          |    miento del Filter. |
+#           |         run()          |          - N/A           |  - Procesa o transfor-|
+#           |                        |                          |    ma los datos.      |
 #           +------------------------+--------------------------+-----------------------+
 #
 #-------------------------------------------------------------------------
