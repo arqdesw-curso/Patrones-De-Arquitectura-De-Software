@@ -1,20 +1,20 @@
 # Capítulo 4
 
-## Sistema de Normalización de Ventas (SNV)
+## Sistema de Análisis de Logs de Accesos (SALA)
 
-Para el ejemplo práctico vamos a suponer que Apple, una empresa estadounidense que ofrece productos tecnológicos, que van desde un smartphone hasta una laptop, pasando por servicios de software. En el año 2017 la empresa registró 4000 ventas en solo tres sucursales ubicadas en Japón, México y Alemania, lo que representó un 15\% más respecto a otros años en esas sucursales.
+Para el ejemplo práctico vamos a suponer que existe una cadena de noticias que ofrece una variedad de contenidos a millones de usuarios de la web. En la empresa existen ingenieros de datos que se dedican a analizar la información en los logs de acceso que se generan.
 
-Dado lo anterior, el CEO de la empresa, Tim Cook, le ha pedido al departamento de ventas de la empresa que realicen el análisis de dichas ventas. Al tratar de analizar las ventas, el departamento encontró que los ingresos de cada venta se encontraba en términos monetarios del país en el que se ubica la sucursal, lo cual impidió que el departamento pudiese realizar el análisis. 
+Dado lo anterior, un análisis muy popular consiste en saber desde qué ciudades del mundo son leídos los contenidos de la cadena de noticias. 
 
-Con el propósito de realizar esta tarea rápidamente, el departamento de ventas solicitó al departamento de desarrollo de software de Apple implementar el Sistema de Normalización de Ventas (SNV), para que normalice dichas ventas antes de su análisis.
+Con el propósito de realizar esta tarea rápidamente, la cadena solicitó a los ingenieros de datos implementar el Sistema de Análisis de Logs de Accesos (SALA).
 
-En la siguiente figura se muestra el diseño de la propuesta de solución del departamento de desarrollo para el SNV.
+En la siguiente figura se muestra el diseño de la propuesta de solución de los ingenieros de datos para el SALA.
 
-![Vista de contenedores del SNV](docs/diagrama_contenedores_capitulo_4.png)
+![Vista de contenedores del SALA](docs/diagrama_contenedores_capitulo_4.png)
 
 ## Prerrequisitos
 
-Para poner en marcha el SNV se requiere instalar algunas dependencias. Podrás encontrar estas dependencias en el archivo `requirements.txt`. También puedes instalar éstas dependencias con el comando:
+Para poner en marcha el SALA se requiere instalar algunas dependencias. Podrás encontrar estas dependencias en el archivo `requirements.txt`. También puedes instalar éstas dependencias con el comando:
 
 ```shell
 pip install -r requirements.txt
@@ -24,15 +24,15 @@ pip install -r requirements.txt
 
 ## Ejecución
 
-Una vez instaladas las dependencias del SNV, podrás ponerlo en marcha con el comando:
+Una vez instaladas las dependencias del SALA, podrás ponerlo en marcha con el comando:
 
 ```shell
-python load_data.py LoadData --local-scheduler
+python geolocator_ip.py
 ```
 
 ## Versión
 
-1.0 - Enero 2018
+2.0 - Febrero 2018
 
 ## Autores
 
